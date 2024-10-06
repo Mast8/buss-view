@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- HTML Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flipper</title>
+    <meta name="description" content="Toss a fair coin and make your decision">
+
+
+    <!-- Links -->
+   
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main id="toss" class="grid">
+        <header>
+            <h1 id="h1">Set sales</h1>
+            <p id="p"></p>
+            <label for="coins">  Sales Data
+                <input id="data" > 
+            </label>
+            
+            <label>Choose Graph</label>
+            <select id="graph">
+                <option value="line">Line</option>
+                <option value="bar">Bar</option>
+                
+            </select>
+        </header>
+
+        <div id="coin">
+            <img class="coinImg"  alt="coin" id="enter-btn">
+            <div id="result"> </div>
+        </div>
+    </main>
+
+    
+    <div class="charts">
+        <div class="charts-card">
+          <p class="chart-title"></p>
+          <div class="bar-chart" id="bar-chart"></div>
+        </div>
+
+       
+
+      </div>
+    </main>
+    <DIV id="stats" class="results">
+        <div id="tail"></div>
+        <div id="head"></div>
+        <div id="total"></div>
+    </DIV>
+        
+    
+    <div id="flip-again"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <script src="./script.js"></script>
+
+
+</body>
+
+</html>
