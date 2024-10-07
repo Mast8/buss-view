@@ -11,17 +11,23 @@ enter_btn.addEventListener("click", function () {
 
 
 function getInput( ){ 
-   
   let data = document.getElementById("data").value;
+  let type = document.getElementById("graph").value;
   dataArr = data.split(",");
   console.log(dataArr);
-
-  graph(dataArr);
+  findmax(dataArr)
+  graph(dataArr,type);
 
 }
 
+function findmax(dataArr){
+  //let max = document.getElementById("max");
+  higest = Math.max(...dataArr);
+  document.getElementById("max").innerHTML = `max is `+ higest;
+}
+
 //charts
-function graph(dataA){
+function graph(dataA,graph){
   
   const barChartOptions = {
     
@@ -31,13 +37,13 @@ function graph(dataA){
       },
     ],
     chart: {
-      type: 'bar',
+      type: graph,
       height: 350,
       toolbar: {
         show: false,
       },
     },
-    colors: ['#246dec', '#cc3c43'],
+    colors: ['#246dec'],
     plotOptions: {
       bar: {
         distributed: true,
@@ -67,3 +73,5 @@ function graph(dataA){
 
   barChart.render();
 }
+
+
