@@ -7,19 +7,31 @@ enter_btn.addEventListener("click", function () {
 
 
 // input 234, 1321,5345,3424,34324 
-234, 1321,5345,3424,34324 ; 234, 1321,5345,3424,34324 
+// 234, 1321,5345,3424,34324 ; 234, 1321,5345,3424,34324 
 // or 123 231 424 234
 
-
-function getInput( ){ 
+function getInput(){ 
   let data = document.getElementById("data").value;
   let type = document.getElementById("graph").value;
-  dataArr = data.split(",").map(Number);
+  let data1 = document.getElementById("data1").value;
+
+  dataArr = get_array(data);
+  //dataArr = data.split(",").map(Number);
+
   find_max(dataArr);
   find_min(dataArr);
   find_average(dataArr);
   graph(dataArr,type);
+  if(data1 ){
+    datab = get_array(data1);
+    graphSets(dataArr, datab, type);
+  }
 
+}
+
+function get_array(array){
+  new_array = array.split(",").map(Number);
+  return new_array;
 }
 
 function find_max(dataArr){
@@ -49,7 +61,7 @@ function graph(dataA,graph){
     series: [
       {
         data: dataA,
-      },
+      }
     ],
     chart: {
       type: graph,
@@ -89,4 +101,55 @@ function graph(dataA,graph){
   barChart.render();
 }
 
+function graphSets(dataA,dataB ,graph){
+  
+  const barChartOptions = {
+    
+    series: [
+      {
+        data: dataA,
+        name: "First"
+      },
+      {
+        data: dataB,
+         name: "Second"
+      }
 
+    ],
+    chart: {
+      type: graph,
+      height: 350,
+      toolbar: {
+        show: false,
+      },
+    },
+    colors: ['#246dec', '#941010'],
+    plotOptions: {
+      bar: {
+        distributed: true,
+        borderRadius: 4,
+        horizontal: false,
+        columnWidth: '40%',
+      },
+    },
+    dataLabels: {
+      enabled: true,
+    },
+    legend: {
+      show: true,
+    },
+    xaxis: {
+      //categories: [flip[0], flip[1]],
+    },
+    yaxis: {
+      
+    },
+  };
+  document.querySelector('.bar-chart').innerHTML = ``;
+  const barChart = new ApexCharts(
+    document.querySelector('.bar-chart'),
+    barChartOptions
+  );
+
+  barChart.render();
+}
