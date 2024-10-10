@@ -33,6 +33,11 @@ label {
     justify-content: center;
 }
 
+.report {
+    display: flex;
+    justify-content: space-around;
+}
+
 
 
 footer {

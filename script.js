@@ -18,15 +18,28 @@ function getInput(){
   dataArr = get_array(data);
   //dataArr = data.split(",").map(Number);
 
-  find_max(dataArr);
+  find_max(dataArr,"max");
   find_min(dataArr);
   find_average(dataArr);
+  get_total(dataArr);
+
   graph(dataArr,type);
-  if(data1 ){
-    datab = get_array(data1);
+  if(data1.length>= 1 ){
+    let datab = get_array(data1);
+    find_max(datab, "max1");
+    //get_total(data1)
+    
+    
     graphSets(dataArr, datab, type);
   }
 
+}
+
+
+
+function get_total(array){
+  total = array.reduce((a, b) => a + b, 0)
+  document.getElementById("total").innerHTML = `Total is `+ total;
 }
 
 function get_array(array){
@@ -34,9 +47,10 @@ function get_array(array){
   return new_array;
 }
 
-function find_max(dataArr){
-  higest = Math.max(...dataArr); 
-  document.getElementById("max").innerHTML = `Max is `+ higest;
+function find_max(dataArr, element){
+  let higest = Math.max(...dataArr); 
+  console.log(element, higest);
+  document.getElementById(element).innerHTML = `Max is `+ higest;
 }
 
 function find_min(dataArr){
