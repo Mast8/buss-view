@@ -19,16 +19,17 @@ function getInput(){
   //dataArr = data.split(",").map(Number);
 
   find_max(dataArr,"max");
-  find_min(dataArr);
-  find_average(dataArr);
-  get_total(dataArr);
+  find_min(dataArr,"min");
+  find_average(dataArr,"avg");
+  get_total(dataArr,"total");
 
   graph(dataArr,type);
   if(data1.length>= 1 ){
     let datab = get_array(data1);
     find_max(datab, "max1");
-    //get_total(data1)
-    
+    find_min(datab, "min1");
+    find_average(datab,"avg1");
+    get_total(datab,"total1");
     
     graphSets(dataArr, datab, type);
   }
@@ -37,9 +38,9 @@ function getInput(){
 
 
 
-function get_total(array){
+function get_total(array,element){
   total = array.reduce((a, b) => a + b, 0)
-  document.getElementById("total").innerHTML = `Total is `+ total;
+  document.getElementById(element).innerHTML = `Total is `+ total;
 }
 
 function get_array(array){
@@ -50,21 +51,21 @@ function get_array(array){
 function find_max(dataArr, element){
   let higest = Math.max(...dataArr); 
   console.log(element, higest);
-  document.getElementById(element).innerHTML = `Max is `+ higest;
+  document.getElementById(element).innerHTML = `Higest amount is `+ higest;
 }
 
-function find_min(dataArr){
+function find_min(dataArr, element){
   lowest = Math.min(...dataArr); 
-  document.getElementById("min").innerHTML = `Min is `+ lowest;
+  document.getElementById(element).innerHTML = `Lowest amount is `+ lowest;
 }
 
-function find_average(dataArr) {
+function find_average(dataArr,element) {
   var total = 0;
   for(var i = 0; i < dataArr.length; i++) {
       total += dataArr[i];
   }
   var avg = total / dataArr.length;
-  document.getElementById("avg").innerHTML = `Avg is `+ avg;
+  document.getElementById(element).innerHTML = `Avgerage is `+ avg;
 }
 
 //charts
