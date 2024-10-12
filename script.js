@@ -34,6 +34,8 @@ function getInput(){
     graphSets(dataArr, datab, type);
   }
 
+
+  
 }
 
 
@@ -65,19 +67,20 @@ function find_average(dataArr,element) {
       total += dataArr[i];
   }
   var avg = total / dataArr.length;
-  document.getElementById(element).innerHTML = `Avgerage is `+ avg;
+  document.getElementById(element).innerHTML = `Average is `+ avg;
 }
 
 //charts
 function graph(dataA,graph){
   
+  
   const barChartOptions = {
-    
+    //series: dataA,
     series: [
       {
         data: dataA,
       }
-    ],
+    ], 
     chart: {
       type: graph,
       height: 350,
@@ -85,7 +88,7 @@ function graph(dataA,graph){
         show: false,
       },
     },
-    colors: ['#246dec'],
+    //colors: ['#246dec'],
     plotOptions: {
       bar: {
         distributed: true,
@@ -93,6 +96,7 @@ function graph(dataA,graph){
         horizontal: false,
         columnWidth: '40%',
       },
+      
     },
     dataLabels: {
       enabled: true,
@@ -117,17 +121,18 @@ function graph(dataA,graph){
 }
 
 function graphSets(dataA,dataB ,graph){
-  
+  colors = ['#246dec', '#941010'];
+ 
   const barChartOptions = {
     
     series: [
       {
         data: dataA,
-        name: "First"
+        name: "First",
       },
       {
         data: dataB,
-         name: "Second"
+        name: "Second",
       }
 
     ],
@@ -138,7 +143,7 @@ function graphSets(dataA,dataB ,graph){
         show: false,
       },
     },
-    colors: ['#246dec', '#941010'],
+    colors: colors,
     plotOptions: {
       bar: {
         distributed: true,
@@ -165,6 +170,18 @@ function graphSets(dataA,dataB ,graph){
     document.querySelector('.bar-chart'),
     barChartOptions
   );
-
   barChart.render();
 }
+
+/* var options = {
+  series: [44, 55, 13, 43, 22],
+  chart: {
+  width: 380,
+  type: 'pie',
+},
+
+
+};
+
+var chart = new ApexCharts(document.querySelector(".bar-chart"), options);
+chart.render(); */
