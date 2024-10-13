@@ -5,11 +5,15 @@ body {
 }
 
 label {
+
     display: flex;
     color: white;
     text-align: center;
     justify-content: center;
+    padding: 5px;
 }
+
+
 
 #h1  {
     color: white;
@@ -20,6 +24,18 @@ label {
 #p {
     text-align: center;
     color: lightgrey;
+}
+
+.graph-ele {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+button {
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .coinImg {
@@ -38,14 +54,13 @@ label {
     justify-content: space-around;
 }
 
-
-
 footer {
     color: gray;
     font-size: small;
     padding-top: 100px;
     text-align: center;
 }
+
 
 #result {
     padding-top: 30px;

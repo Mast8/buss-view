@@ -16,24 +16,25 @@ function getInput(){
   let data1 = document.getElementById("data1").value;
 
   dataArr = get_array(data);
-  //dataArr = data.split(",").map(Number);
+  console.log(dataArr.length);
+  if(data.length > 0  || data1.length > 0 ){
 
-  find_max(dataArr,"max");
-  find_min(dataArr,"min");
-  find_average(dataArr,"avg");
-  get_total(dataArr,"total");
+    find_max(dataArr,"max");
+    find_min(dataArr,"min");
+    find_average(dataArr,"avg");
+    get_total(dataArr,"total");
 
-  graph(dataArr,type);
-  if(data1.length>= 1 ){
-    let datab = get_array(data1);
-    find_max(datab, "max1");
-    find_min(datab, "min1");
-    find_average(datab,"avg1");
-    get_total(datab,"total1");
-    
-    graphSets(dataArr, datab, type);
-  }
-
+    graph(dataArr,type);
+    if(data1.length > 0 ){
+      let datab = get_array(data1);
+      find_max(datab, "max1");
+      find_min(datab, "min1");
+      find_average(datab,"avg1");
+      get_total(datab,"total1");
+      
+      graphSets(dataArr, datab, type);
+    }
+  }else alert("Please insert data. ")
 
   
 }
