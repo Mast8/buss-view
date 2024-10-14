@@ -5,6 +5,8 @@ enter_btn.addEventListener("click", function () {
     getInput();
 });
 
+document.getElementById('graph').addEventListener('change', toggle);
+
 
 // input 234, 1321,5345,3424,34324 
 // 234, 1321,5345,3424,34324 ; 234, 1321,5345,3424,34324 
@@ -16,28 +18,66 @@ function getInput(){
   let data1 = document.getElementById("data1").value;
 
   dataArr = get_array(data);
-  console.log(dataArr.length);
+
   if(data.length > 0  || data1.length > 0 ){
 
-    find_max(dataArr,"max");
-    find_min(dataArr,"min");
-    find_average(dataArr,"avg");
-    get_total(dataArr,"total");
-
-    graph(dataArr,type);
-    if(data1.length > 0 ){
-      let datab = get_array(data1);
-      find_max(datab, "max1");
-      find_min(datab, "min1");
-      find_average(datab,"avg1");
-      get_total(datab,"total1");
+    if(type == "pie"){
+      graphPie(dataArr);
       
-      graphSets(dataArr, datab, type);
+    }else{
+      find_max(dataArr,"max");
+      find_min(dataArr,"min");
+      find_average(dataArr,"avg");
+      get_total(dataArr,"total");
+  
+      graph(dataArr,type);
+      if(data1.length > 0 ){
+       
+        let datab = get_array(data1);
+
+        graphPie(data1);
+        find_max(datab, "max1");
+        find_min(datab, "min1");
+        find_average(datab,"avg1");
+        get_total(datab,"total1");
+        
+        graphSets(dataArr, datab, type);
+      }
     }
+    
   }else alert("Please insert data. ")
 
+  //SWTICH CASE for type of graph
   
 }
+
+function toggle(ev) {
+  // get the input elements, and convert the results into an array
+  //var inputs = Array.prototype.slice.call(document.querySelectorAll('input'));
+  
+  // clear values from all inputs
+  // (that way the user doesn't accidentally enter a value, switch options, and upload unwanted data)
+  //inputs.forEach(input => input.value = '');
+
+  // hide/display fields depending on which option is selected
+  // #name is always displayed
+  switch (ev.target.value) {
+    case 'pie':
+      //let elemn = document.getElementById("data1");
+      //console.log( elemn.style);
+     
+      document.getElementById('data1').style.display = 'none';
+   
+      break;
+   /*  case 'Instructor':
+      document.querySelector('#rank').style.display = 'block';
+      document.querySelector('#dept').style.display = 'block';
+      document.querySelector('#gpa').style.display = 'none';
+      break; */
+  }
+}
+
+
 
 
 
@@ -174,15 +214,18 @@ function graphSets(dataA,dataB ,graph){
   barChart.render();
 }
 
-/* var options = {
-  series: [44, 55, 13, 43, 22],
-  chart: {
-  width: 380,
-  type: 'pie',
-},
+function graphPie(dataA) {
+  var options = {
+    series: dataA,
+    chart: {
+    width: 380,
+    type: 'pie',
+  },
 
 
-};
+  };
+  document.querySelector('.bar-chart').innerHTML = ``;
+  var chart = new ApexCharts(document.querySelector(".bar-chart"), options);
+  chart.render(); 
 
-var chart = new ApexCharts(document.querySelector(".bar-chart"), options);
-chart.render(); */
+}
