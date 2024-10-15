@@ -21,14 +21,18 @@ function getInput(){
 
   if(data.length > 0  || data1.length > 0 ){
 
-    if(type == "pie"){
-      graphPie(dataArr);
-      
-    }else{
       find_max(dataArr,"max");
       find_min(dataArr,"min");
       find_average(dataArr,"avg");
       get_total(dataArr,"total");
+    if(type == "pie"){
+      graphPie(dataArr);
+      
+    }else{
+      /* find_max(dataArr,"max");
+      find_min(dataArr,"min");
+      find_average(dataArr,"avg");
+      get_total(dataArr,"total"); */
   
       graph(dataArr,type);
       if(data1.length > 0 ){
@@ -52,23 +56,19 @@ function getInput(){
 }
 
 function toggle(ev) {
-  // get the input elements, and convert the results into an array
-  //var inputs = Array.prototype.slice.call(document.querySelectorAll('input'));
-  
-  // clear values from all inputs
-  // (that way the user doesn't accidentally enter a value, switch options, and upload unwanted data)
-  //inputs.forEach(input => input.value = '');
-
-  // hide/display fields depending on which option is selected
-  // #name is always displayed
+ 
   switch (ev.target.value) {
     case 'pie':
       //let elemn = document.getElementById("data1");
       //console.log( elemn.style);
      
       document.getElementById('data1').style.display = 'none';
+      document.getElementById('stats1').style.display = 'none';
    
       break;
+      default : 
+      document.getElementById('data1').style.display = 'block';
+      document.getElementById('stats1').style.display = 'block';
    /*  case 'Instructor':
       document.querySelector('#rank').style.display = 'block';
       document.querySelector('#dept').style.display = 'block';
@@ -218,14 +218,13 @@ function graphPie(dataA) {
   var options = {
     series: dataA,
     chart: {
-    width: 380,
-    type: 'pie',
-  },
-
+      width: 380,
+      type: 'pie',
+    },
 
   };
   document.querySelector('.bar-chart').innerHTML = ``;
-  var chart = new ApexCharts(document.querySelector(".bar-chart"), options);
+  const chart = new ApexCharts(document.querySelector(".bar-chart"), options);
   chart.render(); 
 
 }
