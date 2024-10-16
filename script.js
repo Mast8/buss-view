@@ -9,8 +9,7 @@ document.getElementById('graph').addEventListener('change', toggle);
 
 
 // input 234, 1321,5345,3424,34324 
-// 234, 1321,5345,3424,34324 ; 234, 1321,5345,3424,34324 
-// or 123 231 424 234
+
 
 function getInput(){ 
   let data = document.getElementById("data").value;
@@ -25,14 +24,11 @@ function getInput(){
       find_min(dataArr,"min");
       find_average(dataArr,"avg");
       get_total(dataArr,"total");
+
     if(type == "pie"){
       graphPie(dataArr);
       
     }else{
-      /* find_max(dataArr,"max");
-      find_min(dataArr,"min");
-      find_average(dataArr,"avg");
-      get_total(dataArr,"total"); */
   
       graph(dataArr,type);
       if(data1.length > 0 ){
@@ -59,14 +55,12 @@ function toggle(ev) {
  
   switch (ev.target.value) {
     case 'pie':
-      //let elemn = document.getElementById("data1");
-      //console.log( elemn.style);
-     
+
       document.getElementById('data1').style.display = 'none';
       document.getElementById('stats1').style.display = 'none';
-   
       break;
-      default : 
+
+    default : 
       document.getElementById('data1').style.display = 'block';
       document.getElementById('stats1').style.display = 'block';
    /*  case 'Instructor':
@@ -77,17 +71,14 @@ function toggle(ev) {
   }
 }
 
-
-
-
-
 function get_total(array,element){
   total = array.reduce((a, b) => a + b, 0)
   document.getElementById(element).innerHTML = `Total is `+ total;
 }
 
 function get_array(array){
-  new_array = array.split(",").map(Number);
+  new_array = array.split(",").map(Number) ;
+ 
   return new_array;
 }
 
