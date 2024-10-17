@@ -35,7 +35,7 @@ function getInput(){
        
         let datab = get_array(data1);
 
-        graphPie(data1);
+        //graphPie(data1);
         find_max(datab, "max1");
         find_min(datab, "min1");
         find_average(datab,"avg1");
