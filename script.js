@@ -7,9 +7,7 @@ enter_btn.addEventListener("click", function () {
 
 document.getElementById('graph').addEventListener('change', toggle);
 
-
 // input 234, 1321,5345,3424,34324 
-
 
 function getInput(){ 
   let data = document.getElementById("data").value;
@@ -32,10 +30,9 @@ function getInput(){
   
       graph(dataArr,type);
       if(data1.length > 0 ){
-       
+        
         let datab = get_array(data1);
-
-        //graphPie(data1);
+        
         find_max(datab, "max1");
         find_min(datab, "min1");
         find_average(datab,"avg1");
@@ -77,8 +74,10 @@ function get_total(array,element){
 }
 
 function get_array(array){
-  new_array = array.split(",").map(Number) ;
- 
+  //repalce blank space
+  const arrayN = array.split(' ').join('');
+  new_array = arrayN.split(",").map(Number) ;
+
   return new_array;
 }
 
@@ -107,7 +106,6 @@ function graph(dataA,graph){
   
   
   const barChartOptions = {
-    //series: dataA,
     series: [
       {
         data: dataA,
@@ -120,7 +118,6 @@ function graph(dataA,graph){
         show: false,
       },
     },
-    //colors: ['#246dec'],
     plotOptions: {
       bar: {
         distributed: true,
@@ -191,7 +188,6 @@ function graphSets(dataA,dataB ,graph){
       show: true,
     },
     xaxis: {
-      //categories: [flip[0], flip[1]],
     },
     yaxis: {
       
