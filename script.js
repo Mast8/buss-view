@@ -21,7 +21,7 @@ function getInput(){
       find_max(dataArr,"max");
       find_min(dataArr,"min");
       find_average(dataArr,"avg");
-      get_total(dataArr,"total");
+      show_total(dataArr,"total");
 
     if(type == "pie"){
       graphPie(dataArr);
@@ -36,8 +36,9 @@ function getInput(){
         find_max(datab, "max1");
         find_min(datab, "min1");
         find_average(datab,"avg1");
-        get_total(datab,"total1");
-        
+        show_total(datab,"total1");
+
+        get_dif(dataArr, datab);
         graphSets(dataArr, datab, type);
       }
     }
@@ -68,10 +69,16 @@ function toggle(ev) {
   }
 }
 
-function get_total(array,element){
-  total = array.reduce((a, b) => a + b, 0)
+function get_total(array){
+  return total = array.reduce((a, b) => a + b, 0);
+}
+
+function show_total(array,element){
+  total = get_total(array);
   document.getElementById(element).innerHTML = `Total is `+ total;
 }
+
+//function get_total(array,element){
 
 function get_array(array){
   //repalce blank space
@@ -90,6 +97,13 @@ function find_max(dataArr, element){
 function find_min(dataArr, element){
   lowest = Math.min(...dataArr); 
   document.getElementById(element).innerHTML = `Lowest amount is `+ lowest;
+}
+
+function get_dif(array1 , array2){
+  let total = get_total(array1);
+  let total1 = get_total(array2);
+  const dif = total - total1 ; 
+  document.getElementById("dif").innerHTML = `Difference is `+ dif;
 }
 
 function find_average(dataArr,element) {
