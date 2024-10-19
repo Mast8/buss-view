@@ -81,7 +81,7 @@ function show_total(array,element){
 //function get_total(array,element){
 
 function get_array(array){
-  //repalce blank space
+  //replace blank space
   const arrayN = array.split(' ').join('');
   new_array = arrayN.split(",").map(Number) ;
 
@@ -102,8 +102,17 @@ function find_min(dataArr, element){
 function get_dif(array1 , array2){
   let total = get_total(array1);
   let total1 = get_total(array2);
+  //add absolute value
   const dif = total - total1 ; 
-  document.getElementById("dif").innerHTML = `Difference is `+ dif;
+  //document.querySelector('dif1').innerHTML = ``;
+  if(total > total1){
+    document.getElementById("dif").innerHTML = `Difference is `+ dif;
+    document.querySelector('.dif1').innerHTML = ``;
+  }
+  else {
+    document.getElementById("dif1").innerHTML = `Difference is `+ dif;
+    document.querySelector('.dif').innerHTML = ``;
+  }
 }
 
 function find_average(dataArr,element) {
@@ -216,7 +225,8 @@ function graphSets(dataA,dataB ,graph){
 }
 
 function graphPie(dataA) {
-  var options = {
+
+  const options = {
     series: dataA,
     chart: {
       width: 380,
