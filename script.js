@@ -8,6 +8,7 @@ enter_btn.addEventListener("click", function () {
 document.getElementById('graph').addEventListener('change', toggle);
 
 // input 234, 1321,5345,3424,34324 
+// 20, 10,300,40,50
 
 function getInput(){ 
   let data = document.getElementById("data").value;
@@ -90,7 +91,6 @@ function get_array(array){
 
 function find_max(dataArr, element){
   let higest = Math.max(...dataArr); 
-  console.log(element, higest);
   document.getElementById(element).innerHTML = `Higest amount is `+ higest;
 }
 
@@ -103,8 +103,7 @@ function get_dif(array1 , array2){
   let total = get_total(array1);
   let total1 = get_total(array2);
   //add absolute value
-  const dif = total - total1 ; 
-  //document.querySelector('dif1').innerHTML = ``;
+  const dif = Math.abs((total - total1)) ; 
   if(total > total1){
     document.getElementById("dif").innerHTML = `Difference is `+ dif;
     document.querySelector('.dif1').innerHTML = ``;
@@ -126,7 +125,6 @@ function find_average(dataArr,element) {
 
 //charts
 function graph(dataA,graph){
-  
   
   const barChartOptions = {
     series: [
